@@ -81,11 +81,12 @@ if os.path.exists(potfile):
             line = line.strip()
             if not line:
                 continue
-            # Hashcat 22000 format: <hash>:<SSID>:<password>
             parts = line.split(":")
-            if len(parts) >= 4:
+            # Look for a valid password (at least 8 chars, common WPA length)
+            password_candidate = parts[-1]
+            if len(password_candidate) >= 8:
+                password = password_candidate
                 ssid = parts[-2]
-                password = parts[-1]
                 print(f"\n[✓] SSID: {ssid}\n[✓] Password: {password}")
                 found = True
                 break
