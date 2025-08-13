@@ -17,4 +17,4 @@ git clone https://github.com/Karma-0777/wifi-cracker.git
 
 cd wifi-cracker
 
-chmod +x wifi_cracker.py
+python3 wifi_cracker.py
