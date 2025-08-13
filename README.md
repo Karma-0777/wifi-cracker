@@ -14,5 +14,7 @@ sudo apt update
 sudo apt install -y python3 python3-pip hashcat hcxtools
 ## HOW TO START 
 git clone https://github.com/Karma-0777/wifi-cracker.git
+
 cd wifi-cracker
+
 chmod +x wifi_cracker.py
