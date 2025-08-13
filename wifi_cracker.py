@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-import sys
 import subprocess
 
 def run_cmd(cmd, capture_output=False):
@@ -8,17 +7,17 @@ def run_cmd(cmd, capture_output=False):
     result = subprocess.run(cmd, shell=True, capture_output=capture_output, text=True)
     if result.returncode != 0:
         print(f"[!] Command failed: {cmd}")
-        sys.exit(1)
+        exit(1)
     return result.stdout if capture_output else None
 
-# 1. Let user select .cap file
-cap_dir = "."
+# 1. Let user select .cap file from /home/
+cap_dir = "/home/"
 cap_files = [f for f in os.listdir(cap_dir) if f.endswith(".cap")]
 if not cap_files:
-    print("[!] No .cap files found in current directory.")
-    sys.exit(1)
+    print("[!] No .cap files found in /home/")
+    exit(1)
 
-print("\nAvailable .cap files:")
+print("\nAvailable .cap files in /home/:")
 for idx, f in enumerate(cap_files):
     print(f"{idx+1}. {f}")
 
