@@ -1,20 +1,37 @@
-# Wi-Fi Cracker
+# Wi-Fi Cracker Script
 
-A Python script that automates the process of converting `.cap` files to `.hc22000` format and cracking Wi-Fi passwords using Hashcat.
+> ⚠️ IMPORTANT: If the script uses a hardcoded path like `/home/user/`, 
+> you **must replace `user` with your actual Linux username**. 
+> Alternatively, the script can automatically detect your current user with `os.path.expanduser("~")`.
+
+A Python3 script to automate cracking WPA/WPA2 Wi-Fi passwords using Hashcat and hcxtools.
+
+---
 
 ## Features
 
-- Installs necessary dependencies: Python 3, pip, Hashcat, hcxtools
-- Converts `.cap` files to `.hc22000` format
-- Cracks Wi-Fi passwords using a specified wordlist
+- Automatically converts `.cap` files to `.hc22000` format.
+- Cracks WPA/WPA2 handshakes using Hashcat.
+- Allows selection of `.cap` files and wordlists.
+- Extracts and displays only the SSID and password.
+- Works on Linux with Python3.
 
-## Install required Linux packages:
-sudo apt update
+---
 
+## Requirements
+
+- Python 3
+- pip
+- Hashcat
+- hcxtools
+- Linux system (Ubuntu/Debian recommended)
+
+---
+
+## Installation
+
+Install dependencies:
+
+```bash
+sudo apt update -y
 sudo apt install -y python3 python3-pip hashcat hcxtools
-## HOW TO START 
-git clone https://github.com/Karma-0777/wifi-cracker.git
-
-cd wifi-cracker
-
-python3 wifi_cracker.py
