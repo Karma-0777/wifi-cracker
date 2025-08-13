@@ -8,10 +8,6 @@ A Python script that automates the process of converting `.cap` files to `.hc220
 - Converts `.cap` files to `.hc22000` format
 - Cracks Wi-Fi passwords using a specified wordlist
 
-## Installation
-
-Clone the repository and make the script executable:
-
 ##Install required Linux packages:
 sudo apt update
 sudo apt install -y python3 python3-pip hashcat hcxtools
