@@ -63,16 +63,20 @@ run_cmd(hashcat_cmd)
 
 # 6. Extract cracked password from potfile
 if os.path.exists(potfile):
+    found = False
     with open(potfile, "r") as f:
         for line in f:
-            if ":" in line:
-                parts = line.strip().split(":")
-                if len(parts) >= 5:
-                    ssid = parts[3]
-                    password = parts[4]
-                    print(f"\n[✓] SSID: {ssid}\n[✓] Password: {password}")
-                    break
-        else:
-            print("[!] No password found in potfile.")
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split(":")
+            if len(parts) >= 5:
+                ssid = parts[3]
+                password = parts[4]
+                print(f"\n[✓] SSID: {ssid}\n[✓] Password: {password}")
+                found = True
+                break
+    if not found:
+        print("[!] No password found in potfile.")
 else:
     print("[!] Potfile not found. Hashcat may have failed.")
