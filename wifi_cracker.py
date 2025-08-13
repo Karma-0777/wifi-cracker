@@ -82,17 +82,18 @@ if os.path.exists(potfile):
             if not line:
                 continue
             parts = line.split(":")
-            # Look for a valid password (at least 8 chars, common WPA length)
-            password_candidate = parts[-1]
-            if len(password_candidate) >= 8:
-                password = password_candidate
-                ssid = parts[-2]
-                print(f"\n[✓] SSID: {ssid}\n[✓] Password: {password}")
-                found = True
-                break
+            # Take last part as password, second-to-last as SSID
+            if len(parts) >= 2:
+                ssid = parts[-2].strip()
+                password = parts[-1].strip()
+                if password:  # if password is not empty
+                    print(f"\n[✓] SSID: {ssid}\n[✓] Password: {password}")
+                    found = True
+                    break
     if not found:
         print("[!] No password found in potfile. Try a different wordlist or check your .cap file.")
 else:
     print("[!] Potfile not found. Hashcat may have failed.")
+
 
 
