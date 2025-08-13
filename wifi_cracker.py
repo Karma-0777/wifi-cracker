@@ -46,7 +46,7 @@ run_cmd("sudo apt update -y && sudo apt install -y python3 python3-pip hashcat h
 hc22000_file = cap_file.replace(".cap", ".hc22000")
 print(f"[+] Converting {cap_file} to {hc22000_file}...")
 run_cmd(f"hcxpcapngtool -o {hc22000_file} {cap_file}")
-
+os.system('clear')
 # 4. Let user select wordlist
 wordlists_dir = "/usr/share/wordlists"
 wordlists = [f for f in os.listdir(wordlists_dir) if os.path.isfile(os.path.join(wordlists_dir, f))]
@@ -58,8 +58,6 @@ print("\nAvailable wordlists:")
 for idx, wl in enumerate(wordlists):
     print(f"{idx+1}. {wl}")
 
-# Clear terminal after listing wordlists
-os.system('clear')
 
 while True:
     choice = input("\nSelect a wordlist by number: ")
@@ -96,3 +94,4 @@ if os.path.exists(potfile):
         print("[!] No password found in potfile. Try a different wordlist or check your .cap file.")
 else:
     print("[!] Potfile not found. Hashcat may have failed.")
+
